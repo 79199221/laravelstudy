@@ -20,13 +20,25 @@
    firstOrFail($id);
    firstOrCreate([]);查询，不存在则创建
    firstOrNew([]);查询，不存在则new实例
+   delete(); 通过实例删除
+   destory($id);通过id删除
    count();
    sum();
    max();
    save();插入更新纪录
    update();
 
-
+4. 软删除
+   use Illuminate\Database\Eloquent\SoftDeletes
+   protected $dates = ['deleted_at'];
+   Schema::table('user', function($table){
+	$table->softDeletes();创建软删除列
+   }
+   trashed()	判断是否被软删除
+   onlyTrashed()获取删除模型
+   restore()	恢复软删除
+   withTrashed();查询软包含删除结果
+   forceDelete();永久删除
    App\User::where('status', 1)
 	->orderB('name', 'desc')
 	->take(10)
