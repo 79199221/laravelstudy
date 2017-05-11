@@ -8,4 +8,28 @@
    $incrementing = false; 主键不自增
    $timestamps = false; 取消时间戳
    protected $dateFrmat = 'U'; 时间戳格式
+   protected $fillable = ['name'];白名单
+   protected $guarded = ['price'];黑名单
+3. get();
+   all();
+   chunk(200, function(){});	组块
+   cursor()	一次执行单个查询
+   find($id)
+   first();
+   findOrFail($id);
+   firstOrFail($id);
+   firstOrCreate([]);查询，不存在则创建
+   firstOrNew([]);查询，不存在则new实例
+   count();
+   sum();
+   max();
+   save();插入更新纪录
+   update();
+
+
+   App\User::where('status', 1)
+	->orderB('name', 'desc')
+	->take(10)
+	->get();
+
 
